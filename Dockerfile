@@ -5,6 +5,11 @@ RUN apt-get install git apt-utils automake cron curl dpkg make man-db nano tar u
 RUN git config --global user.email "yoanndelattre21@gmail.com"
 RUN git config --global user.name "ImWargame"
 RUN apt-get install -y python3 python3-pip 
+
+#     <--clean installation-->
+RUN apt-get -qy clean && \
+      rm -rf /var/lib/apt/lists/*
+
 VOLUME ["/mnt"]
 EXPOSE 80 443
 WORKDIR  /mnt
